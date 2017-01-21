@@ -2,7 +2,7 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM 172.30.28.174:5000/selenium/docker-selenium
+FROM selenium/node-base
 MAINTAINER Selenium <selenium-developers@googlegroups.com>
 
 USER root
