@@ -3,6 +3,7 @@ oc new-project selenium
 git clone https://github.com/ddavison/selenium-openshift-templates.git
 cd selenium-openshift-templates/
 oc create -f selenium-hub.yaml
+oc new-app --template selenium-hub
 oc delete route selenium-hub
 oc expose service selenium-hub
 
