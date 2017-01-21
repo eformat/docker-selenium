@@ -8,6 +8,8 @@ MAINTAINER Selenium <selenium-developers@googlegroups.com>
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
+USER root
+
 #==============
 # VNC and Xvfb
 #==============
