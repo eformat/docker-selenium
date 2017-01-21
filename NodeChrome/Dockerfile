@@ -49,6 +49,7 @@ RUN echo export CHROME_VERSION=$( dpkg -s google-chrome-stable | grep Version | 
 RUN chmod +x /opt/selenium/browser_version.sh
 COPY generate_config /opt/selenium/generate_config
 RUN chmod +x /opt/selenium/generate_config
+RUN chown seluser:seluser /opt/selenium/generate_config
 
 #=================================
 # Chrome Launch Script Modication
