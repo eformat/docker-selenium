@@ -14,10 +14,12 @@ Create the chrome node via a docker build using a Dockerfile and associated scri
     cd ..
     git clone https://github.com/petenorth/docker-selenium.git
     cd docker-selenium
-    oc new-app . --context-dir=NodeChrome -e=HUB_PORT_4444_TCP_ADDR=selenium-hub -e=HUB_PORT_4444_TCP_PORT=4444
+    oc new-app . --context-dir=NodeChrome -e=HUB_PORT_4444_TCP_ADDR=selenium-hub -e=HUB_PORT_4444_TCP_PORT=4444 --name=node-chrome
     oc create -f selenium-node-chrome-service.yaml 
-    oc new-app . --context-dir=NodeFirefox -e=HUB_PORT_4444_TCP_ADDR=selenium-hub -e=HUB_PORT_4444_TCP_PORT=4444
+    oc new-app . --context-dir=NodeFirefox -e=HUB_PORT_4444_TCP_ADDR=selenium-hub -e=HUB_PORT_4444_TCP_PORT=4444 --name=node-firefox
     oc create -f selenium-node-firefox-service.yaml
+
+Ignore the error regarding the imagestream on the second oc new-app command.
 
 Now run a simple JUnit test that using the Selenium RemoteWebDriver connecting to the Openshift hosted Selenium Hub.
 

@@ -17,8 +17,20 @@ public class SeleniumTest {
 	@Test
 	public void chromeTest() throws MalformedURLException{
 		String hubURL = "http://selenium-hub-selenium.rhel-cdk.10.1.2.2.xip.io/wd/hub";
-		DesiredCapabilities capability = DesiredCapabilities.chrome();
-		WebDriver driver = new RemoteWebDriver(new URL(hubURL), capability);
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		WebDriver driver = new RemoteWebDriver(new URL(hubURL),capabilities);
+		doTest(driver); 
+	}
+	
+	@Test
+	public void firefoxTest() throws MalformedURLException{
+		String hubURL = "http://selenium-hub-selenium.rhel-cdk.10.1.2.2.xip.io/wd/hub";
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		WebDriver driver = new RemoteWebDriver(new URL(hubURL),capabilities);
+		doTest(driver); 
+	}	
+
+	private void doTest(WebDriver driver) {
 		driver.get("http://www.google.com");
 		WebElement element = driver.findElement(By.name("q"));
 		element.sendKeys("Cheese!");
@@ -38,7 +50,7 @@ public class SeleniumTest {
         System.out.println("Page title is: " + driver.getTitle());
         
         //Close the browser
-        driver.quit(); 
+        driver.quit();
 	}
 
 }
