@@ -42,7 +42,10 @@ ENV NODE_MAX_SESSION 1
 ENV NODE_REGISTER_CYCLE 5000
 ENV NODE_PORT 5555
 COPY generate_config /opt/selenium/generate_config
-RUN chmod +x /opt/selenium/generate_config \
-  && chown -R seluser:seluser /opt/selenium
-
+RUN chmod +x /opt/selenium/generate_config \ 
+  && echo export FIREFOX_VERSION=$( firefox -version | cut -d " " -f 3 ) > /opt/selenium/browser_version.sh \
+  && chmod +x /opt/selenium/browser_version.sh \
+  && chown -R seluser:seluser /opt/selenium \
+  && chgrp -R 0 /opt/selenium \
+  && chmod -R g+rw /opt/selenium
 USER seluser
