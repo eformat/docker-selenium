@@ -2,7 +2,7 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM selenium/base:3.0.1-fermium
+FROM selenium/base
 MAINTAINER Selenium <selenium-developers@googlegroups.com>
 
 #========================
@@ -26,7 +26,7 @@ COPY entry_point.sh /opt/bin/entry_point.sh
 RUN /opt/selenium/generate_config > /opt/selenium/config.json
 RUN chown -R seluser /opt/selenium
 
-USER seluser
+USER 1000
 
 CMD ["/opt/bin/entry_point.sh"]
 
