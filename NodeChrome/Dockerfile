@@ -60,7 +60,7 @@ RUN chgrp -R 0 /opt/selenium
 RUN chmod -R g+rw /opt/selenium
 
 
-USER seluser
+USER 1000
 # Following line fixes
 # https://github.com/SeleniumHQ/docker-selenium/issues/87
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
