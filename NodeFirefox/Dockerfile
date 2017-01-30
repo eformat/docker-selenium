@@ -48,4 +48,4 @@ RUN chmod +x /opt/selenium/generate_config \
   && chown -R seluser:seluser /opt/selenium \
   && chgrp -R 0 /opt/selenium \
   && chmod -R g+rw /opt/selenium
-USER seluser
+USER 1000
