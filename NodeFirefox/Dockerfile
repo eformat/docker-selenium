@@ -8,8 +8,9 @@ MAINTAINER Selenium <selenium-developers@googlegroups.com>
 USER root
 
 RUN apt-get update -qqy \
-  && apt-get -qqy install libnss3-tools \
-  && apt-get -y purge libnss3-tools
+  && apt-get -qqy --no-install-recommends install \
+    libnss3-tools \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/* 
 
 #=========
 # Firefox
