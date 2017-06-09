@@ -10,7 +10,7 @@ RUN usermod -g root -G seluser seluser
 #==========
 # Selenium
 #==========
-RUN  yum -y install wget \
+RUN  yum install -y wget \
   && mkdir -p /opt/selenium \
   && wget --no-verbose https://selenium-release.storage.googleapis.com/3.4/selenium-server-3.4.0.zip -O /opt/selenium/selenium-server-standalone.jar
 
