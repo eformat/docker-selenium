@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhel7/java-1.8.0-openjdk
+FROM registry.access.redhat.com/redhat-openjdk-18/jboss-base-7-jdk8
 MAINTAINER Selenium <selenium-developers@googlegroups.com>
 
 USER root
