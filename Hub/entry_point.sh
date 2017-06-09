@@ -19,6 +19,9 @@ function shutdown {
     echo "shutdown complete"
 }
 
+whoami
+ls -l /opt/selenium/
+
 java ${JAVA_OPTS} -jar /opt/selenium/selenium-server-standalone.jar \
   -role hub \
   -hubConfig $CONF \
