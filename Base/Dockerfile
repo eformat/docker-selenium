@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift
+FROM registry.access.redhat.com/rhel7/java-1.8.0-openjdk
 MAINTAINER Selenium <selenium-developers@googlegroups.com>
 
 USER root
