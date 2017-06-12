@@ -27,11 +27,19 @@ RUN curl -L -o google-chrome-stable_current_x86_64.rpm https://dl.google.com/lin
 #  yum -y install redhat-lsb libXScrnSaver
 
 #==================
+
+#==================
 # Chrome webdriver
 #==================
-#ARG CHROME_DRIVER_VERSION=chromedriver
-RUN yum install -y chromedriver && \
-  yum clean all -y
+ARG CHROME_DRIVER_VERSION=2.30
+RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
+  && rm -rf /opt/selenium/chromedriver \
+  && unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \
+  && rm /tmp/chromedriver_linux64.zip \
+  && mv /opt/selenium/chromedriver /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
+  && chmod 755 /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
+  && ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
+
 
 #========================
 # Selenium Configuration
