@@ -62,6 +62,9 @@ RUN chown -R seluser:seluser /opt/selenium
 RUN chgrp -R 0 /opt/selenium
 RUN chmod -R g+rw /opt/selenium
 
+RUN chgrp -R 0 /home/jboss
+RUN chmod -R g+rw /home/boss
+
 
 USER 1000
 # Following line fixes
