@@ -63,7 +63,7 @@ RUN chgrp -R 0 /opt/selenium
 RUN chmod -R g+rw /opt/selenium
 
 RUN chgrp -R 0 /home/jboss
-RUN chmod -R g+rw /home/boss
+RUN chmod -R g+rw /home/jboss
 
 
 USER 1000
