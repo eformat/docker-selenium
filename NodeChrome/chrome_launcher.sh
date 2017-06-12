@@ -5,6 +5,7 @@
 # found in the LICENSE file.
 
 # Let the wrapped binary know that it has been run through the wrapper.
+export HOME=/opt/selenium
 export CHROME_WRAPPER="`readlink -f "$0"`"
 
 HERE="`dirname "$CHROME_WRAPPER"`"
