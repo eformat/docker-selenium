@@ -9,20 +9,13 @@ USER root
 #==============
 # VNC and Xvfb
 #==============
-#RUN yum-config-manager --enable rhel-7-server-optional-rpms \
-#  && yum install -y xorg-x11-server-Xvfb
-#RUN yum install -y xorg-x11-server-Xvfb
-
 # Install required RPMs
 RUN yum repolist > /dev/null && \
     yum-config-manager --enable rhel-server-rhscl-7-rpms && \
     yum-config-manager --enable rhel-7-server-optional-rpms && \
     yum-config-manager --disable epel >/dev/null || : && \
-    yum install -y xorg-x11-server-Xvfb
-
-# Remove custom repo files
-RUN rm /etc/yum.repos.d/jboss-rhel-rhscl.repo /etc/yum.repos.d/jboss-rhel-os.repo /etc/yum.repos.d/jboss-rhel-ose.repo /etc/yum.repos.d/jboss-rhel-optional.repo
-
+    yum install -y xorg-x11-server-Xvfb && \
+    yum clean all -y
 
 #==============================
 # Scripts to run Selenium Node
