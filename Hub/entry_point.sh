@@ -18,10 +18,6 @@ function shutdown {
     wait $NODE_PID
     echo "shutdown complete"
 }
-id -u seluser
-id -g seluser
-whoami
-ls -l /opt/selenium/
 
 java ${JAVA_OPTS} -jar /opt/selenium/selenium-server-standalone.jar \
   -role hub \
