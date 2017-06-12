@@ -25,7 +25,7 @@ RUN yum install -y ${CHROME_VERSION:-google-chrome-stable} && \
 # Chrome webdriver
 #==================
 ARG CHROME_DRIVER_VERSION=chromedriver
-RUN yum install -y chromedriver && \
+RUN yum install -y ${CHME_DRIVER_VERSION:-chromedriver} && \
   yum clean all -y
 
 #========================
