@@ -48,7 +48,6 @@ ENV NODE_MAX_INSTANCES 1
 ENV NODE_MAX_SESSION 1
 ENV NODE_REGISTER_CYCLE 5000
 ENV NODE_PORT 5555
-RUN echo export CHROME_VERSION=58.0 > /opt/selenium/browser_version.sh
 RUN chmod +x /opt/selenium/browser_version.sh
 COPY generate_config /opt/selenium/generate_config
 RUN chmod +x /opt/selenium/generate_config
