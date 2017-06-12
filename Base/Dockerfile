@@ -11,6 +11,6 @@ RUN usermod -g root -G seluser seluser
 # Selenium
 #==========
 RUN  mkdir -p /opt/selenium \
-  && curl -o /opt/selenium/selenium-server-standalone.jar https://goo.gl/s4o9Vx 
+  && curl -L -o /opt/selenium/selenium-server-standalone.jar https://goo.gl/s4o9Vx 
 
 USER 1000
