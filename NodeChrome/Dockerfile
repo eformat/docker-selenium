@@ -17,6 +17,9 @@ USER root
 #       latest (equivalent to google-chrome-stable)
 #       google-chrome-beta  (pull latest beta)
 #============================================
+
+RUN yum-config-manager --enable rhel-7-desktop-optional-rpms
+
 ARG CHROME_VERSION="google-chrome-stable"
 RUN yum install -y ${CHROME_VERSION:-google-chrome-stable} && \
   yum clean all -y
