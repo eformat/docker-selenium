@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /opt/selenium/browser_version.sh
+CHROME_VERSION=$(/opt/google/chrome/chrome -version | awk '{ print $3 }' )
 
 echo "
 {
