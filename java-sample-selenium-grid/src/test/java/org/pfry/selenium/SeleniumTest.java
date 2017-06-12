@@ -16,7 +16,7 @@ public class SeleniumTest {
 	
 	@Test
 	public void chromeTest() throws MalformedURLException{
-		String hubURL = "http://selenium-hub-selenium.rhel-cdk.10.1.2.2.xip.io/wd/hub";
+		String hubURL = "http://selenium-hub-selenium.192.168.42.163.nip.io/wd/hub";
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		WebDriver driver = new RemoteWebDriver(new URL(hubURL),capabilities);
 		doTest(driver); 
@@ -24,7 +24,7 @@ public class SeleniumTest {
 	
 	@Test
 	public void firefoxTest() throws MalformedURLException{
-		String hubURL = "http://selenium-hub-selenium.rhel-cdk.10.1.2.2.xip.io/wd/hub";
+		String hubURL = "http://selenium-hub-selenium.192.168.42.163.nip.io/wd/hub";
 		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 		WebDriver driver = new RemoteWebDriver(new URL(hubURL),capabilities);
 		doTest(driver); 
