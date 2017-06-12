@@ -21,7 +21,7 @@ USER root
 RUN yum-config-manager --enable rhel-7-desktop-optional-rpms
 
 ARG CHROME_VERSION="google-chrome-stable"
-RUN curl -L -o localinstall google-chrome-stable_current_x86_64.rpm https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm && \
+RUN curl -L -o google-chrome-stable_current_x86_64.rpm https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm && \
     yum -y localinstall google-chrome-stable_current_x86_64.rpm
 
 #  yum -y install redhat-lsb libXScrnSaver
