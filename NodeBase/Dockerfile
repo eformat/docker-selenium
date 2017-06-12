@@ -9,9 +9,9 @@ USER root
 #==============
 # VNC and Xvfb
 #==============
-#RUN subscription-manager repos --enable rhel-7-server-optional-rpms \
-#  && yum install -y xorg-x11-server-Xvfb
-RUN yum install -y xorg-x11-server-Xvfb
+RUN yum-config-manager --enable rhel-7-server-optional-rpms \
+  && yum install -y xorg-x11-server-Xvfb
+#RUN yum install -y xorg-x11-server-Xvfb
 
 #==============================
 # Scripts to run Selenium Node
