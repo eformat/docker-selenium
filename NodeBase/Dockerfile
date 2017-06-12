@@ -14,8 +14,11 @@ USER root
 #RUN yum install -y xorg-x11-server-Xvfb
 
 # Install required RPMs
-RUN yum install -y --disablerepo=\* --enablerepo=jboss-rhel-rhscl --enablerepo=jboss-rhel-os --enablerepo=jboss-rhel-ose --enablerepo=jboss-rhel-optional xorg-x11-server-Xvfb \
-    && yum clean all
+RUN yum repolist > /dev/null && \
+    yum-config-manager --enable rhel-server-rhscl-7-rpms && \
+    yum-config-manager --enable rhel-7-server-optional-rpms && \
+    yum-config-manager --disable epel >/dev/null || : && \
+    yum install -y xorg-x11-server-Xvfb
 
 # Remove custom repo files
 RUN rm /etc/yum.repos.d/jboss-rhel-rhscl.repo /etc/yum.repos.d/jboss-rhel-os.repo /etc/yum.repos.d/jboss-rhel-ose.repo /etc/yum.repos.d/jboss-rhel-optional.repo
