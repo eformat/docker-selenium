@@ -8,6 +8,8 @@
 #export HOME=/opt/selenium
 export CHROME_WRAPPER="`readlink -f "$0"`"
 
+export CHROME_USER_DATA_DIR=/opt/selenium
+
 HERE="`dirname "$CHROME_WRAPPER"`"
 
 # Check if the CPU supports SSE2. If not, try to pop up a dialog to explain the
