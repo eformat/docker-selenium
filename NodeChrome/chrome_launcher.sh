@@ -7,7 +7,6 @@
 # Let the wrapped binary know that it has been run through the wrapper.
 export CHROME_WRAPPER="`readlink -f "$0"`"
 
-export CHROME_USER_DATA_DIR=/opt/selenium
 export HOME=/opt/selenium
 
 HERE="`dirname "$CHROME_WRAPPER"`"
