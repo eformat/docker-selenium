@@ -8,6 +8,7 @@
 export CHROME_WRAPPER="`readlink -f "$0"`"
 
 export HOME=/opt/selenium
+export CHROME_USER_DATA_DIR=/opt/selenium
 
 HERE="`dirname "$CHROME_WRAPPER"`"
 
