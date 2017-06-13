@@ -34,10 +34,10 @@ ENV SCREEN_HEIGHT 1020
 ENV SCREEN_DEPTH 24
 ENV DISPLAY :99.0
 
-RUN chown -R seluser /opt/selenium
+RUN chown -R jboss /opt/selenium
 RUN chgrp -R 0 /opt/selenium
 RUN chmod -R g+rw /opt/selenium
 
-USER 1000
+USER 185
 
 CMD ["/opt/bin/entry_point.sh"]
