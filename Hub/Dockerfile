@@ -26,11 +26,11 @@ USER root
 COPY generate_config /opt/selenium/generate_config
 COPY entry_point.sh /opt/bin/entry_point.sh
 RUN /opt/selenium/generate_config > /opt/selenium/config.json
-RUN chown -R seluser /opt/selenium
+RUN chown -R jboss /opt/selenium
 RUN chgrp -R 0 /opt/selenium
 RUN chmod -R g+rw /opt/selenium
 
-USER 1000
+USER 185
 
 CMD ["/opt/bin/entry_point.sh"]
 
