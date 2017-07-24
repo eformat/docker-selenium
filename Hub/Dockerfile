@@ -11,6 +11,8 @@ MAINTAINER Selenium <selenium-developers@googlegroups.com>
 
 EXPOSE 4444
 
+USER root
+
 # As integer, maps to "maxSession"
 ENV GRID_MAX_SESSION 5
 # In milliseconds, maps to "newSessionWaitTimeout"
