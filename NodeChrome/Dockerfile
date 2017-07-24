@@ -2,8 +2,8 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM selenium/node-base
-MAINTAINER Selenium <selenium-developers@googlegroups.com>
+FROM selenium/node-base:3.4.0-francium
+LABEL authors=SeleniumHQ
 
 USER root
 
@@ -29,38 +29,29 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 #==================
 # Chrome webdriver
 #==================
-ARG CHROME_DRIVER_VERSION=2.25
+ARG CHROME_DRIVER_VERSION=2.30
 RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
   && rm -rf /opt/selenium/chromedriver \
   && unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \
   && rm /tmp/chromedriver_linux64.zip \
   && mv /opt/selenium/chromedriver /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
   && chmod 755 /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
-  && ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
+  && sudo ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
 
-#========================
-# Selenium Configuration
-#========================
-ENV NODE_MAX_INSTANCES 1
-ENV NODE_MAX_SESSION 1
-ENV NODE_REGISTER_CYCLE 5000
-ENV NODE_PORT 5555
-RUN echo export CHROME_VERSION=$( dpkg -s google-chrome-stable | grep Version | cut -d " " -f 2 | cut -d "-" -f 1 ) > /opt/selenium/browser_version.sh
-RUN chmod +x /opt/selenium/browser_version.sh
-COPY generate_config /opt/selenium/generate_config
-RUN chmod +x /opt/selenium/generate_config
+COPY generate_config /opt/bin/generate_config
 
 #=================================
-# Chrome Launch Script Modication
+# Chrome Launch Script Modification
 #=================================
 COPY chrome_launcher.sh /opt/google/chrome/google-chrome
+
+# Generating config inside the image rather than with entry_point.sh
+RUN /opt/bin/generate_config > /opt/selenium/config.json
+
 RUN chmod +x /opt/google/chrome/google-chrome
 RUN chown -R seluser:seluser /opt/selenium
 RUN chgrp -R 0 /opt/selenium
 RUN chmod -R g+rw /opt/selenium
 
-
 USER 1000
-# Following line fixes
-# https://github.com/SeleniumHQ/docker-selenium/issues/87
-ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
+
